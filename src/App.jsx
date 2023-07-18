@@ -1,5 +1,4 @@
-import { Buttons } from "@mui/material"
-
+import Buttons from "./components/Buttons"
 function App() {
   return (
     <>
