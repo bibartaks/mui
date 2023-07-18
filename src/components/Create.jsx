@@ -5,17 +5,19 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight"
 const Create = () => {
   return (
     <Container>
-      <Typography variant="h6" component="h2" gutterBottom color="gray">
+      <Typography
+        sx={{
+          marginBottom: 2,
+        }}
+        variant="h6"
+        color="textSecondary"
+        component="h2"
+        gutterBottom
+      >
         Create a New Note
       </Typography>
 
       <Button
-        sx={{
-          backgroundColor: "violet",
-          "&:hover": {
-            background: "blue",
-          },
-        }}
         type="submit"
         color="primary"
         variant="contained"
