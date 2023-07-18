@@ -1,8 +1,8 @@
-import Buttons from "./components/Buttons"
+import Create from "./components/Create"
 function App() {
   return (
     <>
-      <Buttons />
+      <Create />
     </>
   )
 }
