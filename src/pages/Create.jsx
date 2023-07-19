@@ -46,7 +46,7 @@ const Create = () => {
   }
 
   return (
-    <Container maxWidth={"sm"}>
+    <Container>
       <Typography
         sx={{
           marginBottom: 2,

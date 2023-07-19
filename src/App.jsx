@@ -3,6 +3,7 @@ import Create from "./pages/Create"
 import { createTheme, ThemeProvider } from "@mui/material"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import Notes from "./pages/Notes"
+import Layout from "./components/Layout"
 
 const theme = createTheme({
   palette: {
@@ -22,14 +23,16 @@ const theme = createTheme({
 
 function App() {
   return (
-    <Router>
-      <ThemeProvider theme={theme}>
-        <Routes>
-          <Route path="/" element={<Notes />} />
-          <Route path="/create" element={<Create />} />
-        </Routes>
-      </ThemeProvider>
-    </Router>
+    <ThemeProvider theme={theme}>
+      <Router>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Notes />} />
+            <Route path="/create" element={<Create />} />
+          </Routes>
+        </Layout>
+      </Router>
+    </ThemeProvider>
   )
 }
 
