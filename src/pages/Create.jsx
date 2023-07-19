@@ -1,13 +1,26 @@
 import "@fontsource/roboto/500.css"
-import { Typography, Button, Container, TextField } from "@mui/material"
+import {
+  Typography,
+  Button,
+  Container,
+  TextField,
+  Radio,
+  RadioGroup,
+  FormControlLabel,
+  FormControl,
+  FormLabel,
+} from "@mui/material"
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 const Create = () => {
   const [title, setTitle] = useState("")
   const [details, setDetails] = useState("")
   const [titleError, setTitleError] = useState(false)
   const [detailsError, setDetailsError] = useState(false)
+  const [category, setCategory] = useState("todos")
+  const navigate = useNavigate()
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -23,12 +36,17 @@ const Create = () => {
     }
 
     if (title && details) {
-      console.log(title, details)
+      // console.log(title, details, category)
+      fetch("http://localhost:8000/notes", {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({ title, details, category }),
+      }).then(() => navigate("/"))
     }
   }
 
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth={"sm"}>
       <Typography
         sx={{
           marginBottom: 2,
@@ -68,6 +86,29 @@ const Create = () => {
             marginBottom: 3,
           }}
         />
+
+        <FormControl
+          sx={{
+            marginTop: 2,
+            marginBottom: 2,
+            display: "block",
+          }}
+        >
+          <FormLabel>Note Category</FormLabel>
+          <RadioGroup
+            value={category}
+            onChange={e => setCategory(e.target.value)}
+          >
+            <FormControlLabel value="money" control={<Radio />} label="Money" />
+            <FormControlLabel value="todos" control={<Radio />} label="Todos" />
+            <FormControlLabel
+              value="reminders"
+              control={<Radio />}
+              label="Reminders"
+            />
+            <FormControlLabel value="work" control={<Radio />} label="Work" />
+          </RadioGroup>
+        </FormControl>
 
         <Button
           type="submit"
