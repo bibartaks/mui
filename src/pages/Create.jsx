@@ -69,7 +69,7 @@ const Create = () => {
           required
           error={titleError}
           sx={{
-            marginBottom: 3,
+            marginBottom: 5,
           }}
         />
         <TextField
